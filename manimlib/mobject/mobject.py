@@ -588,10 +588,13 @@ class Mobject(object):
 
         return wrapper
 
+
+    # DONE
     @stash_mobject_pointers
     def serialize(self):
         return pickle.dumps(self)
 
+    # DONE
     def deserialize(self, data: bytes):
         self.become(pickle.loads(data))
         return self
