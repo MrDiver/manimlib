@@ -445,6 +445,7 @@ class Mobject(object):
         self.add(*submobject_list)
         return self
 
+    # DONE
     def digest_mobject_attrs(self):
         """
         Ensures all attributes which are mobjects are included
@@ -458,6 +459,7 @@ class Mobject(object):
 
     # Submobject organization
 
+    # DONE
     def arrange(self, direction: np.ndarray = RIGHT, center: bool = True, **kwargs):
         for m1, m2 in zip(self.submobjects, self.submobjects[1:]):
             m2.next_to(m1, direction, **kwargs)
@@ -465,6 +467,7 @@ class Mobject(object):
             self.center()
         return self
 
+    # To different
     def arrange_in_grid(
         self,
         n_rows: int | None = None,
@@ -511,6 +514,8 @@ class Mobject(object):
         self.center()
         return self
 
+
+    # DONE
     def arrange_to_fit_dim(self, length: float, dim: int, about_edge=ORIGIN):
         ref_point = self.get_bounding_box_point(about_edge)
         n_submobs = len(self.submobjects)
@@ -527,15 +532,19 @@ class Mobject(object):
         self.move_to(ref_point, about_edge)
         return self
 
+    # DONE
     def arrange_to_fit_width(self, width: float, about_edge=ORIGIN):
         return self.arrange_to_fit_dim(width, 0, about_edge)
 
+    # DONE
     def arrange_to_fit_height(self, height: float, about_edge=ORIGIN):
         return self.arrange_to_fit_dim(height, 1, about_edge)
 
+    # DONE
     def arrange_to_fit_depth(self, depth: float, about_edge=ORIGIN):
         return self.arrange_to_fit_dim(depth, 2, about_edge)
 
+    # DONE
     def sort(
         self,
         point_to_num_func: Callable[[np.ndarray], float] = lambda p: p[0],
@@ -548,6 +557,7 @@ class Mobject(object):
         self.assemble_family()
         return self
 
+    # DONE
     def shuffle(self, recurse: bool = False):
         if recurse:
             for submob in self.submobjects:
@@ -558,6 +568,9 @@ class Mobject(object):
 
     # Copying and serialization
 
+    # DONE
+    # Todo maybe make pr to add staticmethod?
+    @staticmethod
     def stash_mobject_pointers(func):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
